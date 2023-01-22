@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- materialize css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <!-- css -->
     <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
     <title>{% block title %}Weather{% endblock %}</title>
@@ -24,11 +25,11 @@
                         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down menu">
                             {% if request.user.is_authenticated %}
-                                <li><a href="#"><i class="material-icons left">person</i>Olá, {{request.user}}</a></li>
-                                <li><a href="{% url 'logoutUser' %}"><i class="material-icons left">directions_walk</i>Logout</a></li>
+                                <li><a href="#"><i class="material-icons left">person</i>Привет, {{request.user}}</a></li>
+                                <li><a href="{% url 'logoutUser' %}"><i class="material-icons left">directions_walk</i>Выйти</a></li>
                             {% else %}    
-                                <li><a href="{% url 'registerUser' %}"><i class="material-icons left">person_add</i>Resgistre-se</a></li>
-                                <li><a href="{% url 'loginUser' %}"><i class="material-icons left">perm_identity</i>Login</a></li>
+                                <li><a href="{% url 'registerUser' %}"><i class="material-icons left">person_add</i>Зарегистрироваться</a></li>
+                                <li><a href="{% url 'loginUser' %}"><i class="material-icons left">perm_identity</i>Войти</a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -38,11 +39,11 @@
             <ul class="sidenav side-menu" id="mobile-demo">
                 <p class="logo center logo-side">Weather</p>
                 {% if request.user.is_authenticated %}
-                    <li><a href="#"><i class="small material-icons left white-text">person</i>Olá, {{request.user}}</a></li>
-                    <li><a href="{% url 'logoutUser' %}"><i class="small material-icons left white-text">directions_walk</i>Logout</a></li>
+                    <li><a href="#"><i class="small material-icons left white-text">person</i>Привет, {{request.user}}</a></li>
+                    <li><a href="{% url 'logoutUser' %}"><i class="small material-icons left white-text">directions_walk</i>Выйти</a></li>
                 {% else %}
-                    <li><a href="{% url 'registerUser' %}"><i class="material-icons left white-text">person_add</i>Resgistre-se</a></li>
-                    <li><a href="{% url 'loginUser' %}"><i class="material-icons left white-text">perm_identity</i>Login</a></li>
+                    <li><a href="{% url 'registerUser' %}"><i class="material-icons left white-text">person_add</i>Зарегистрироваться</a></li>
+                    <li><a href="{% url 'loginUser' %}"><i class="material-icons left white-text">perm_identity</i>Войти</a></li>
                 {% endif %}            
             </ul>
         </section>
@@ -53,9 +54,10 @@
     </main>
     <!-- footer -->
     <footer class="footer bg-footer center">
-        <p class="flow-text footer-text white-text">Weather &copy; 2020</p>
+        <p class="flow-text footer-text white-text">Килеев Сергей 211-321</p>
     </footer>
     <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

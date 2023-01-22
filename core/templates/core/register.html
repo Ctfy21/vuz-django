@@ -12,7 +12,7 @@
 		<div class="col l6 offset-l3">
 			<div class="card white card-login">
 				<div class="card-content">
-					<h1 class="center title">Registre-se</h1>
+					<h1 class="center title">Регистрация</h1>
 					<div class="row">
 						<form class="col l12" method="POST" action="">
 							{% csrf_token %}
@@ -20,7 +20,7 @@
 								<div class="input-field col l12">
 									<i class="material-icons prefix">account_circle</i>
 								  	{% render_field creation_form.username class="validate" type="text" %}
-									<label for="icon-user" class="label-user">Usuário</label>
+									<label for="icon-user" class="label-user">Имя</label>
 									<span class="helper-text">{{creation_form.errors.username}}</span>  
 								</div>
 							</div>
@@ -36,7 +36,7 @@
 								<div class="input-field col l12">
 									<i class="material-icons prefix">lock_outline</i>
 									{% render_field creation_form.password1 class="validate" type="password" %}
-									<label for="icon-lock_out" class="label-pass">Senha</label>
+									<label for="icon-lock_out" class="label-pass">Пароль</label>
 									<span class="helper-text">{{creation_form.errors.password1}}</span> 
 								</div>
 							  </div>	
@@ -44,7 +44,7 @@
 								<div class="input-field col l12">
 									<i class="material-icons prefix">lock_outline</i>
 									{% render_field creation_form.password2 class="validate" type="password" %}
-									<label for="icon-lock_outline" class="label-pass">Confirme a senha</label>
+									<label for="icon-lock_outline" class="label-pass">Подтверждение пароля</label>
 									<span class="helper-text">{{creation_form.errors.password2}}</span> 
 								</div>
 						  	</div>
@@ -52,12 +52,12 @@
 								<div class="row">
 									<button type="submit" class="col s10 offset-s1 
 										center waves-effect waves-light 
-										btn-large btn-login">Registre-me
+										btn-large btn-login">Зарегистрировать
 									</button>
 								</div>
 							</div>
 						</form>	
-						<a href="{% url 'loginUser' %}" class="forgot-pass">Já possui conta?</a>
+						<a href="{% url 'loginUser' %}" class="forgot-pass">Забыли пароль?</a>
 					</div>
 				</div>
 			</div>

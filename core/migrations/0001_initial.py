@@ -15,11 +15,11 @@ class Migration(migrations.Migration):
             name='City',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, verbose_name='Nome da cidade')),
+                ('name', models.CharField(max_length=255, verbose_name='Имя города')),
             ],
             options={
-                'verbose_name': 'Cidade',
-                'verbose_name_plural': 'Cidades',
+                'verbose_name': 'City',
+                'verbose_name_plural': 'Cities',
             },
         ),
     ]

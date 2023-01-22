@@ -25,13 +25,11 @@ main {
 
 /*navbar*/
 .bg-navbar, .bg-section, .bg-footer {
-  background: linear-gradient(142deg, #0008d1 0%, #5ca5ff 35%, #00d8ff 100%);
 }
 
 .logo {
   font-family: verdana, arial, sans-serif;
   letter-spacing: 2px;
-  text-shadow: 3px 3px 2px rgba(0, 225, 255, 0.98);
 }
 
 .logo-side {
@@ -56,11 +54,9 @@ main {
 }
 
 .side-menu li a:hover {
-  background-color: #64acff;
 }
 
 .sidenav {
-  background: linear-gradient(145deg, #489dff 0%, #8bddff 35%, #003b59 100%);
 }
 
 /* slider */
@@ -123,36 +119,9 @@ footer {
 body {
   min-width: 100vw;
   min-height: 100vh;
-  background: #4f0071;
-  background: linear-gradient(145deg, #4f0071 0%, #3f0096 35%, #00edff 100%);
-  -webkit-animation: bganimation 15s infinite;
-          animation: bganimation 15s infinite;
   background-size: 400%;
 }
 
-@-webkit-keyframes bganimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes bganimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 .card-row {
   margin-top: 5%;
@@ -176,7 +145,6 @@ body {
 
 .forgot-pass {
   padding-left: 2.5em;
-  color: cadetblue;
   font-size: 18px;
 }
 

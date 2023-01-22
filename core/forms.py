@@ -10,7 +10,7 @@ class CityForm(ModelForm):
     class Meta:
         model = City
         fields = ['name']
-        widgets = {'name' : TextInput(attrs={'class': 'white grey-text'})}
+        widgets = {'name': TextInput(attrs={'class': 'white grey-text'})}
 
 
 class CreateUserForm(UserCreationForm):

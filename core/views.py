@@ -10,6 +10,7 @@ from .decorators import unauthenticated_user
 from django.contrib import messages
 from .models import *
 from django.conf import settings
+from rest_framework.generics import CreateAPIView, ListAPIView, ListCreateAPIView
 from .forms import CityForm, CreateUserForm
 
 
@@ -24,7 +25,7 @@ def loginUser(request):
             login(request, user)
             return redirect('home')
         else:
-            messages.error(request, 'Usuário ou senha estão incorretos!')
+            messages.error(request, 'Имя пользователя или пароль неверны!')
     context = {}
     return render(request, 'core/login.html', context)
 
@@ -43,10 +44,10 @@ def registerUser(request):
         creation_form = CreateUserForm(request.POST)
         if creation_form.is_valid():
             creation_form.save()
-            messages.success(request, 'Conta criada com sucesso!')
+            messages.success(request, 'Регистрация завершена!')
             return redirect('loginUser')  
         else:
-            messages.error(request, 'Verifique se todos os dados estão corretos!')     
+            messages.error(request, 'Проверьте данные на правильность!')
     else:
         creation_form = CreateUserForm()
 
@@ -57,7 +58,7 @@ def registerUser(request):
 @login_required(login_url="loginUser")
 def home(request):
     api_key = settings.API_KEY
-    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&APPID='+ api_key +'&lang=pt_br'
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&APPID='+ api_key +'&lang=ru'
     
     if request.user.is_authenticated:
         if request.method == 'POST':
@@ -69,22 +70,23 @@ def home(request):
                 if city_user == 0:
                     r = requests.get(url.format(new_city)).json()
                     if r['cod'] == 200:
+                        urlCoord = 'https://geocode-maps.yandex.ru/1.x/?apikey=09ad4ed5-0e9c-4af7-9add-bd2bf3ff6953&geocode='+new_city+'&format=json'
                         instance = form.save(commit=False)
                         instance.created_by = request.user
                         instance.save()
                         form.save_m2m()
                         instance.user.add(request.user)
-                        messages.success(request, 'Cidade adicionada com sucesso!')
+                        messages.success(request, 'Город успешно добавлен')
                         return redirect('home')   
                     else:
-                        messages.error(request, 'Cidade Inexistente!')    
+                        messages.error(request, 'Неверные координаты')
                         return redirect('home')
                 else:
-                    messages.error(request, 'Esta cidade já foi adicionada!')
+                    messages.error(request, 'Этот город уже добавлен')
                     return redirect('home')
             else:
                 raise ValidationError("Invalid form!")
-                messages.error("Formulário inválido, verifique se todos os dados estão corretos!")     
+                messages.error("Неверная форма, убедитесь, что все данные верны!")
         else:
             form = CityForm()
         
@@ -103,6 +105,7 @@ def home(request):
             'icon':  r['weather'][0]['icon'],
             'id': city.pk,
         }
+        print(city_weather)
         weather_data.append(city_weather)
     context = {
         'weather_data': weather_data, 
@@ -115,5 +118,5 @@ def home(request):
 def delete(request, pk):
     
     City.objects.filter(user=request.user, pk=pk).delete()
-    messages.success(request, 'Cidade excluída com sucesso!')
+    messages.success(request, 'Город успешно удален')
     return redirect('home')

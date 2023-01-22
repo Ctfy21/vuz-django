@@ -1,10 +1,9 @@
-// navbar side menu
+
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems, {});
 });
 
-// slide 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.slider');
     var instances = M.Slider.init(elems, {
@@ -15,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// messages
 
 document.addEventListener('DOMContentLoaded', function(){
     var elems = document.querySelectorAll('.modal');
